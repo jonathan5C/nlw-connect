@@ -1,0 +1,16 @@
+Estrutura de uma API Springboot:
+	- TomCat
+	- Spring Framework
+	- Estrutura das camadas:
+		- Model (onde vou ter os atributos 		do banco de dados)
+		- Repository (as operações que vai 		ligar o Model com o Banco de Dados)
+		- Services (encapsular as regras de 		negócios)
+		- Controllers (são classes que vai 		ter ações e fazer ligação com o 		front e back)
+	
+
+
+(TomCat é um servidor web de código aberto para aplicações em JAVA)
+
+
+ATALHO do Eclipse
+crtl + shit + o = vai importar todas as coisas para a classe
