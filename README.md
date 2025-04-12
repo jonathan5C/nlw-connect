@@ -75,7 +75,7 @@ Resposta Esperada:
 }
 ~~~~
 
--Caso de uso
+Casos de usos
 
 1. Caso base:
     - *Condições*: Evento previamente cadastrado, Usuário ainda inexistente (email não existe)
@@ -91,4 +91,48 @@ Resposta Esperada:
        - Retorna o resultado da inscrição contendo o ID e o link para indicação
 
 3. Caso Alternativo:
-   - *Condições*:
+   - *Condições*: Já existe inscrição do usuário no evento
+   - *Ações*:
+     	- Lançar uma exceção indicando conflito
+
+
+### US02 - Gerar Ranking de Inscritos
+Este User Story atende ao requisito funcional RF03.
+~~~bash
+Endpoint: GET /subscription/PRETTY_NAME/ranking?limit=X
+~~~~
+- Possibilidade de gerar um ranking de número de inscritos por indicação (ou seja, ordenado pela somatória de inscritos por indicação)
+- Pode ser limitado aos X primeiros colocados no ranking
+
+~~~bash
+http://localhost:8080/subscription/codecraft-summit-2025/ranking?limit=3
+[
+	{
+		"userName":"John Doe",
+		"subscribers": 1000
+	},
+	{
+		"userName":"Mary Page",
+		"subscribers": 873
+	},
+	{
+		"userName":"Frank",
+		"subscribers": 690
+	}
+]
+~~~~
+
+### US03 - Gerar Estatísticas de número de inscritos por participante
+Este User Story atende ao requisito funcional RF04.
+
+~~~bash
+Endpoint: GET /subscription/PRETTY_NAME/ranking/USERID
+~~~~
+Recuperar o número de inscritos de inscritos que efetivaram sua participação no evento indicados por um determinado usuário (USERID)
+
+~~~bash
+http://localhost:8080/subscription/codecraft-summit-2025/ranking/123
+{
+	"subscribers": 1267
+}
+~~~~
